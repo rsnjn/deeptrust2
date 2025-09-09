@@ -1,7 +1,18 @@
+// Background service worker for API communication
+
+const BACKEND_URL = 'https://deeptrust2-backend-9dnie8pyo-rsnjns-projects.vercel.app'; // UPDATE THIS!
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === 'analyzeMedia') {
+    analyzeMedia(request.url, request.type)
+      .then(result => sendResponse(result))
+      .catch(error => sendResponse({ error: error.message }));
+    return true; // Keep message channel open for async response
+  }
+});
+
 async function analyzeMedia(mediaUrl, mediaType) {
   try {
-    console.log('Starting analysis:', mediaUrl);
-    
     const response = await fetch(`${BACKEND_URL}/api/analyze`, {
       method: 'POST',
       headers: {
@@ -14,23 +25,42 @@ async function analyzeMedia(mediaUrl, mediaType) {
     });
     
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Server responded with error:', response.status, errorText);
-      throw new Error(`Server error: ${response.status}`);
+      throw new Error('Analysis failed');
     }
     
-    const result = await response.json();
-    return result;
-    
+    return await response.json();
   } catch (error) {
-    console.error('Analysis error:', error.message);
-    
-    // Check if it's a network error
-    if (error instanceof TypeError && error.message === 'Failed to fetch') {
-      console.error('Network error - possible CORS issue or backend is down');
-      throw new Error('Network error - please check if the backend is accessible');
-    }
-    
+    console.error('Analysis error:', error);
     throw error;
   }
 }
+
+// Context menu for right-click analysis
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: 'analyzeWithDeepTRUST',
+    title: 'Analyze with DeepTRUST',
+    contexts: ['image', 'video']
+  });
+});
+
+chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+  if (info.menuItemId === 'analyzeWithDeepTRUST') {
+    const mediaUrl = info.srcUrl;
+    const mediaType = info.mediaType;
+    
+    try {
+      const result = await analyzeMedia(mediaUrl, mediaType);
+      
+      // Send result to content script
+      chrome.tabs.sendMessage(tab.id, {
+        action: 'showResult',
+        url: mediaUrl,
+        score: result.deepfake_score,
+        explanation: result.explanation
+      });
+    } catch (error) {
+      console.error('Context menu analysis error:', error);
+    }
+  }
+});
