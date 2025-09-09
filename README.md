@@ -10,9 +10,13 @@ Download to your computer today for a safer internet expereince! Stay alert and 
 2. Credibility Score: DeepTRUST does not point fingers, but rather provides a number range to help users make decisions
 3. Education: Educate users on the signs of Deepfakes
 
-# Installation Process
-1. Connect this Repository to Vercel
-2. Run repository on vercel.
-3. Open Instagram on your laptop (Does not support mobile).
-4. Click the DeepTRUST extension to start validating!
+# Installation Process Best in Chrome
+1. Click the Green "code" button --> download ZIP
+2. Extract the ZIP file
+3. Type 'chrome://extensions' in the address bar and press 'Enter'
+4. Enable developer mode
+5. Press "load package" button.
+6.  Navigate to the extracted folder and select the browser-extension folder *NOT THE PARENT FOLDER*
+7.  Click the puzzle piece icon and pin the DeepTRUST icon to the toolbar
+8.  Use it on any website with images
 
