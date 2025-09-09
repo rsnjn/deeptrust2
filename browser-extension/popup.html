@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>DeepTRUST</h1>
+    <p class="subtitle">Deepfake Detection Tool</p>
+    
+    <div id="mediaList" class="media-list">
+      <p class="loading">Detecting media on this page...</p>
+    </div>
+    
+    <div id="results" class="results" style="display: none;">
+      <h3>Analysis Results</h3>
+      <div id="resultContent"></div>
+    </div>
+    
+    <div class="footer">
+      <button id="scanPage" class="btn-primary">Scan Page</button>
+      <a href="#" id="settings" class="settings-link">Settings</a>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
