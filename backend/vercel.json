@@ -1,4 +1,8 @@
 {
-  "devCommand": "echo 'No dev command needed'",
-  "buildCommand": "echo 'No build needed for Python'"
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/analyze"
+    }
+  ]
 }
