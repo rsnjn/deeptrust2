@@ -1,18 +1,14 @@
 {
-  "functions": {
-    "api/analyze.py": {
-      "runtime": "python3.9",
-      "maxDuration": 30
+  "builds": [
+    {
+      "src": "api/analyze.py",
+      "use": "@vercel/python"
     }
-  },
+  ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/api/analyze.py"
+      "dest": "api/analyze.py"
     }
   ]
 }
