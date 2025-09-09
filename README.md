@@ -13,10 +13,10 @@ Download to your computer today for a safer internet expereince! Stay alert and 
 # Installation Process Best in Chrome
 1. Click the Green "code" button --> download ZIP
 2. Extract the ZIP file
-3. Type 'chrome://extensions' in the address bar and press 'Enter'
+3. In your address bar, type 'chrome://extensions'and press 'Enter'.
 4. Enable developer mode
 5. Press "load package" button.
 6.  Navigate to the extracted folder and select the browser-extension folder *NOT THE PARENT FOLDER*
-7.  Click the puzzle piece icon and pin the DeepTRUST icon to the toolbar
+7.  On Chrome webpage: Click the puzzle piece icon and pin the DeepTRUST icon to the toolbar
 8.  Use it on any website with images
 
