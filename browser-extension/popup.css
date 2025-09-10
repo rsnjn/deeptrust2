@@ -70,7 +70,7 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #3498db;
+  background-color: #9b6aff;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -81,11 +81,11 @@ h1 {
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
+  background-color: #502db0;
 }
 
 .btn-analyze {
-  background-color: #2ecc71;
+  background-color: #a48cc0;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -95,7 +95,7 @@ h1 {
 }
 
 .btn-analyze:hover {
-  background-color: #27ae60;
+  background-color: #725e8b;
 }
 
 .btn-analyze:disabled {
